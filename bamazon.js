@@ -12,12 +12,14 @@ var connection = mysql.createConnection({
 
 connection.query("SELECT * FROM products", function (err, res) {
 	if (err) throw err;
-	console.log("Item    Product \t\tDepartment \tPrice\t Stock");
-	console.log("------------------------------------------------------------------");
-	for (var i = 0; i < res.length; i++) {
-		console.log(res[i].ItemID + " \t" + res[i].ProductName + "\t" + res[i].DepartmentName + "\t" + res[i].Price + " \t " + res[i].StockQuantity);
-	}
-	console.log("------------------------------------------------------------------");
+	console.table(res);
+	
+	// console.log("Item    Product \tDepartment \tPrice\t Stock");
+	// console.log("------------------------------------------------------------------");
+	// for (var i = 0; i < res.length; i++) {
+	// 	console.log(res[i].ItemID + " \t" + res[i].ProductName + "\t" + res[i].DepartmentName + "\t" + res[i].Price + " \t " + res[i].StockQuantity);
+	// }
+	// console.log("------------------------------------------------------------------");
 
 	inquirer.prompt([{
 		name: "product",
